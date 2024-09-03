@@ -4,6 +4,8 @@ import {default as PageResetPassword} from "@/views/pages/auth/reset-password/Ma
 import {default as PageForgotPassword} from "@/views/pages/auth/forgot-password/Main";
 import {default as PageNotFound} from "@/views/pages/shared/404/Main";
 
+import {default as AdminPageGames} from "@/views/pages/private/admin/games/Main";
+
 import {default as PageDashboard} from "@/views/pages/private/dashboard/Main";
 import {default as PageProfile} from "@/views/pages/private/profile/Main";
 
@@ -19,6 +21,18 @@ const routes = [
         path: "/",
         meta: {requiresAuth: false, isPublicAuthPage: true},
         component: PageLogin,
+    },
+    {
+        name: "admin",
+        path: "/admin",
+        children: [
+            {
+                name: "games",
+                path: "games",
+                meta: {requiresAuth: true},
+                component: AdminPageGames,
+            },
+        ]
     },
     {
         name: "panel",
